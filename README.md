@@ -1,32 +1,58 @@
-# HtmlCbz
-A html/js in-browser .cbz comic/manga file viewer<br>
-Mainly intended for use in school/work where apps and other websites are probably blocked, but use it however you'd like!
+# Comic Reader
 
-## How to use
-- Go to [https://maxadams0.github.io/HtmlCbz](https://maxadams0.github.io/HtmlCbz)
-- Go to [https://htmlcbz.pages.dev/](https://htmlcbz.pages.dev/)
-- Run it through browser ( just open index.html )
-- By using the Google Docs feature 'Apps Script' ( follow instructions below )
-
-## How to create Google Docs deployment using Apps Script
-### 7 steps but they're not hard, promise
-
-> 1. Create a new doc
-> 2. Go to `Extensions -> Apps Script` (it will open a new tab)
-> 3. Under the `Files` section, there should be a `Code.gs` file
-> 4. Make another file named `Index.html` (make sure the first letter is capitalized)
-> 5. In Github copy/paste the contents of `Code.gs` and `Index.html` into the files you made in Apps Script
-> 6. Go back to the Google Doc and refresh
-> 7. If a new menu tab should appear called `Cbz Reader`, you're good to go! Have fun avoiding classwork!
+A production-ready, in-browser CBZ/CBR comic and manga reader with library management.
 
 ## Features
-- Load any .Cbz file
-- Page counter
 
-## Planned Features
-- ~~Automatic GAS updater (so I don't have to manually copy over changes, has no user benefit besides reliability)~~ Single html file, just cpy+paste!
-- Fix zoom changing page #
-- Better UI
-- Custom css styles
-- Preference menu?
-- ~~More ways to access (for school lol)~~ Google docs & alt. website available
+- **Library Management**: Link local folders to build your comic library with cover previews
+- **Multiple Reading Modes**: Vertical scroll, single page, or two-page spread
+- **Reading Direction**: LTR (western) or RTL (manga) with easy toggle
+- **Keyboard Navigation**: Arrow keys, space, home/end, and more
+- **Touch Gestures**: Swipe to turn pages on mobile
+- **Progress Tracking**: Automatically saves your reading position per volume
+- **Zoom Controls**: Fit-width, fit-height, or custom zoom
+- **Invert Colors**: Toggle for comfortable night reading
+- **Fullscreen Mode**: Immersive reading experience
+- **Responsive Design**: Works on desktop and mobile
+
+## Quick Start
+
+### Development
+```bash
+npm install
+npm run dev
+```
+
+### Production Build
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` folder, ready to deploy to any static host.
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| ← / → | Previous/Next page (direction-aware) |
+| ↑ / ↓ | Previous/Next page (in paged modes) |
+| Space | Next page |
+| Home / End | First/Last page |
+| V | Vertical scroll mode |
+| 1 | Single page mode |
+| 2 | Two-page spread mode |
+| D | Toggle reading direction (LTR/RTL) |
+| I | Invert colors |
+| F | Fullscreen |
+| Esc | Back to library |
+
+## Browser Support
+
+- **Full features** (including library): Chrome, Edge (Chromium-based browsers)
+- **Basic features** (single file): Firefox, Safari
+
+The library feature uses the File System Access API which is only available in Chromium browsers. Other browsers can still open individual CBZ files.
+
+## Legacy Version
+
+The original single-file version is preserved as `index.old.html` for environments where a simple, portable solution is preferred.

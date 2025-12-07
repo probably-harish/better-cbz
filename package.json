@@ -1,0 +1,24 @@
+{
+  "name": "htmlcbz",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "A production-ready in-browser CBZ/CBR comic reader with library management",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["cbz", "cbr", "comic", "manga", "reader"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "idb": "^8.0.3",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.6"
+  }
+}

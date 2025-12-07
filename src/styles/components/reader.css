@@ -1,0 +1,268 @@
+/* Reader View */
+.reader-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+}
+
+.reader-view.inverted {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.reader-view.inverted img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Reader Container */
+.reader-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vertical Scroll Mode */
+.vertical-scroller {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.vertical-scroller img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Paged Reader */
+.paged-reader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.paged-reader img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Two Page Spread */
+.two-page-spread {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  height: 100%;
+}
+
+.two-page-spread img {
+  max-width: calc(50% - var(--spacing-xs));
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Page Navigation Overlays (for click-to-turn) */
+.page-nav-overlay {
+  position: absolute;
+  top: 0;
+  bottom: var(--controls-height);
+  width: 25%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.page-nav-overlay.prev {
+  left: 0;
+}
+
+.page-nav-overlay.next {
+  right: 0;
+}
+
+/* Reader Controls */
+.reader-controls {
+  position: relative;
+  z-index: var(--z-controls);
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-bg-tertiary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: transform var(--transition-normal);
+}
+
+.reader-controls.hidden {
+  transform: translateY(100%);
+}
+
+.controls-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Control Groups */
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.control-group.page-nav {
+  flex-shrink: 0;
+}
+
+.control-group.reading-modes {
+  display: flex;
+  gap: 2px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-sm);
+  padding: 2px;
+}
+
+.control-group.reading-modes button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: transparent;
+  border-radius: 2px;
+}
+
+.control-group.reading-modes button.active {
+  background: var(--color-accent);
+}
+
+.control-group.zoom {
+  flex: 1;
+  min-width: 150px;
+  max-width: 250px;
+}
+
+.control-group.zoom input[type="range"] {
+  flex: 1;
+  min-width: 80px;
+}
+
+.control-group.zoom .zoom-value {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Page Counter */
+.page-counter {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Direction Button */
+.btn-direction {
+  font-size: var(--font-size-xs);
+  min-width: 40px;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-left: auto;
+}
+
+.quick-actions button {
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-md);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  z-index: var(--z-modal);
+}
+
+.loading-overlay .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-bg-tertiary);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-overlay .message {
+  margin-top: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error State */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.error-state h3 {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-danger);
+}
+
+.error-state p {
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-text-secondary);
+  max-width: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .controls-bar {
+    gap: var(--spacing-sm);
+  }
+
+  .control-group.zoom {
+    order: 10;
+    width: 100%;
+    max-width: none;
+  }
+
+  .control-group.reading-modes {
+    display: none;
+  }
+
+  .quick-actions {
+    margin-left: 0;
+  }
+}
+
+/* Touch-friendly on mobile */
+@media (pointer: coarse) {
+  .page-nav-overlay {
+    width: 33%;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
